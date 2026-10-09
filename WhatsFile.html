@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f3f8f3"><meta name="description" content="A private, browser-based WhatsApp Status media saver.">
+<title>StatusPocket — WhatsApp Status Saver</title>
+<style>
+:root{color-scheme:light;--bg:#f3f8f3;--panel:#ffffff;--panel2:#edf5ee;--line:#d6e5d9;--text:#20372a;--muted:#647a6b;--green:#21865a;--lime:#b7df79;--pink:#c778a5}*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 8% 0%,#d7f0df 0,transparent 38%),radial-gradient(ellipse at 100% 30%,#eee1f5 0,transparent 36%),var(--bg);color:var(--text);font:15px/1.5 Inter,system-ui,-apple-system,Segoe UI,sans-serif}button,input{font:inherit}.wrap{max-width:1120px;margin:auto;padding:0 22px}.nav{height:78px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #ffffff12}.brand{display:flex;align-items:center;gap:11px;font-weight:850;letter-spacing:-.6px;font-size:19px}.logo{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,var(--green),var(--lime));color:#102219;font-size:23px;box-shadow:0 7px 25px #49d5972e}.tiny{color:var(--muted);font-size:11px}.badge{border:1px solid #49d59755;background:#49d59712;color:var(--green);border-radius:99px;padding:7px 11px;font-size:11px;font-weight:700}.hero{padding:56px 0 30px;max-width:740px}.eyebrow{color:var(--green);font-size:11px;text-transform:uppercase;letter-spacing:2px;font-weight:850}.hero h1{font-size:clamp(36px,6vw,64px);line-height:1.02;letter-spacing:-2.6px;margin:14px 0}.hero h1 span{background:linear-gradient(100deg,var(--green),var(--lime),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}.hero p{max-width:600px;color:var(--muted);font-size:16px}.layout{display:grid;grid-template-columns:350px 1fr;gap:18px;align-items:start;margin-bottom:45px}.card{background:linear-gradient(145deg,#ffffffed,#f7fbf7ed);border:1px solid var(--line);border-radius:22px;padding:22px;box-shadow:0 20px 60px #0002}.card h2{font-size:17px;margin:0 0 5px;letter-spacing:-.4px}.sub{font-size:12px;color:var(--muted);margin:0 0 18px}.steps{display:grid;gap:14px;margin:20px 0}.step{display:flex;gap:12px;align-items:flex-start}.number{flex:none;width:28px;height:28px;border-radius:9px;background:#49d59719;border:1px solid #49d59755;color:var(--green);display:grid;place-items:center;font-weight:800;font-size:12px}.step strong{display:block;font-size:13px}.step p{margin:3px 0 0;color:var(--muted);font-size:12px}.drop{border:1.5px dashed #4d7660;background:#49d59708;border-radius:17px;min-height:180px;padding:23px 15px;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;cursor:pointer;transition:.2s}.drop:hover,.drop.over{border-color:var(--green);background:#49d59713;transform:translateY(-2px)}.upload-icon{width:48px;height:48px;display:grid;place-items:center;border-radius:15px;background:#49d5971c;color:var(--green);font-size:24px}.drop strong{font-size:14px}.drop span{font-size:11px;color:var(--muted)}.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px}.btn{border:1px solid var(--line);border-radius:12px;padding:10px 13px;background:var(--panel2);color:var(--text);font-size:12px;font-weight:750;cursor:pointer;transition:.2s}.btn:hover{transform:translateY(-1px);border-color:#49d59788}.primary{background:linear-gradient(110deg,var(--green),var(--lime));color:#102219;border:0}.privacy{border-top:1px solid var(--line);margin-top:19px;padding-top:14px;font-size:11px;line-height:1.7;color:var(--muted)}.privacy b{color:var(--green)}.gallery-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}.gallery-head h2{margin:0}.count{font-size:11px;color:var(--muted);border:1px solid var(--line);border-radius:99px;padding:6px 9px}.toolbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:15px}.search{flex:1;min-width:130px;background:#ffffff;border:1px solid var(--line);border-radius:11px;color:var(--text);padding:10px 12px;font-size:12px;outline:none}.search:focus{border-color:var(--green)}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px}.media{min-width:0;position:relative;border:1px solid var(--line);border-radius:15px;overflow:hidden;background:#edf4ee;animation:appear .25s ease}.preview{aspect-ratio:4/5;display:grid;place-items:center;background:linear-gradient(145deg,#e1f1e5,#eee8f6);overflow:hidden;position:relative}.preview img,.preview video{width:100%;height:100%;object-fit:cover}.file-icon{font-size:34px;color:#9bb9a6}.type{position:absolute;top:8px;left:8px;background:#ffffffdf;border:1px solid #20372a20;color:#20372a;border-radius:7px;padding:4px 6px;font-size:9px;font-weight:800}.media-info{padding:10px}.filename{font-size:11px;font-weight:750;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.filesize{font-size:10px;color:var(--muted);margin:3px 0 9px}.media-actions{display:flex;gap:6px}.media-actions .btn{flex:1;padding:7px 5px;font-size:10px;text-align:center}.empty{grid-column:1/-1;border:1px dashed var(--line);border-radius:17px;text-align:center;padding:48px 15px;color:var(--muted)}.empty .big{font-size:34px;margin-bottom:10px}.empty strong{display:block;color:var(--text);font-size:14px;margin-bottom:5px}.empty p{font-size:12px;margin:0}.foot{text-align:center;color:var(--muted);font-size:11px;padding:0 0 30px}.toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#ffffff;color:#20372a;border:1px solid #d6e5d9;padding:10px 15px;border-radius:12px;font-weight:750;font-size:12px;transition:.2s;box-shadow:0 10px 35px #0004;z-index:5}.toast.show{opacity:1;transform:translate(-50%,0)}@keyframes appear{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}@media(max-width:800px){.layout{grid-template-columns:1fr}.hero{padding-top:38px}.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(max-width:520px){.wrap{padding:0 13px}.nav{height:67px}.hero h1{letter-spacing:-1.6px}.hero{padding-top:32px}.card{padding:15px;border-radius:17px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.badge{font-size:10px;padding:6px 8px}.hero p{font-size:14px}}
+
+/* Animated atmosphere and polished action feedback */
+body{isolation:isolate;overflow-x:hidden;background:var(--bg)}
+body::before,body::after{content:"";position:fixed;z-index:-1;pointer-events:none;border-radius:50%;filter:blur(65px);opacity:.34;will-change:transform}
+body::before{width:42vw;height:42vw;min-width:280px;min-height:280px;left:-12vw;top:12vh;background:radial-gradient(circle,#35d995 0%,#35d99500 70%);animation:ambientDriftA 19s ease-in-out infinite alternate}
+body::after{width:44vw;height:44vw;min-width:300px;min-height:300px;right:-14vw;top:38vh;background:radial-gradient(circle,#a16bdb 0%,#a16bdb00 70%);animation:ambientDriftB 23s ease-in-out infinite alternate}
+.wrap{animation:pageReveal .8s ease both}.logo{animation:logoFloat 4s ease-in-out infinite;transition:transform .3s,box-shadow .3s}.logo:hover{transform:rotate(-8deg) scale(1.08);box-shadow:0 10px 34px #49d59755}.badge{animation:badgeGlow 3.5s ease-in-out infinite}
+.hero .eyebrow{animation:fadeSlide .65s .08s both}.hero h1{animation:fadeSlide .75s .16s both}.hero>p{animation:fadeSlide .75s .25s both}
+.card{animation:cardRise .8s cubic-bezier(.2,.75,.25,1) both;transition:border-color .3s,box-shadow .35s,transform .35s}.layout>.card:nth-child(2){animation-delay:.12s}.card:hover{border-color:#49d59766;box-shadow:0 24px 70px #0003,0 0 28px #49d5970a}
+.step{transition:transform .25s}.step:hover{transform:translateX(4px)}.number{transition:transform .3s,background .3s}.step:hover .number{transform:rotate(-8deg) scale(1.1);background:#49d59730}
+.drop{position:relative;overflow:hidden;transition:background .3s,border-color .3s,transform .3s,box-shadow .3s}.drop::after{content:"";position:absolute;inset:-70% -30%;pointer-events:none;background:linear-gradient(110deg,transparent 40%,#ffffff0c 49%,#ffffff20 51%,transparent 60%);transform:translateX(-75%) rotate(8deg);animation:dropShimmer 6s ease-in-out infinite}.drop:hover,.drop.over{box-shadow:0 0 0 4px #49d5970b,0 12px 34px #49d59710}.upload-icon{transition:transform .35s;animation:iconBreathe 3s ease-in-out infinite}.drop:hover .upload-icon,.drop.over .upload-icon{transform:translateY(-4px) scale(1.1) rotate(-4deg)}
+.btn{position:relative;overflow:hidden;isolation:isolate;transition:transform .22s,border-color .25s,box-shadow .25s,filter .25s}.btn:hover{transform:translateY(-2px);box-shadow:0 7px 18px #0002;filter:brightness(1.06)}.btn:active,.btn.is-animating{transform:scale(.96);filter:brightness(1.12)}.btn::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(110deg,transparent,#ffffff22,transparent);transform:translateX(-130%);transition:transform .55s}.btn:hover::after{transform:translateX(130%)}.primary{box-shadow:0 5px 20px #49d59718}
+.search{transition:border-color .25s,box-shadow .25s,background .25s}.search:focus{box-shadow:0 0 0 4px #49d59713;background:#f5faf6}
+.media{animation:mediaEnter .5s cubic-bezier(.2,.75,.25,1) both;transition:transform .28s,border-color .28s,box-shadow .28s}.media:nth-child(6n+2){animation-delay:.04s}.media:nth-child(6n+3){animation-delay:.08s}.media:nth-child(6n+4){animation-delay:.12s}.media:nth-child(6n+5){animation-delay:.16s}.media:nth-child(6n+6){animation-delay:.2s}.media:hover{transform:translateY(-4px);border-color:#49d59788;box-shadow:0 15px 30px #0003}.preview img,.preview video{transition:transform .6s,filter .3s}.media:hover .preview img{transform:scale(1.045)}.media.removing{animation:mediaExit .3s ease forwards;pointer-events:none}.media.clearing{animation:mediaExit .3s ease forwards;animation-delay:var(--exit-delay,0ms);pointer-events:none}
+.empty{animation:emptyPop .55s ease both}.empty .big{display:inline-block;animation:iconBreathe 3s ease-in-out infinite}.count{transition:transform .25s,color .25s}.count.bump{animation:countBump .38s ease}.toast{transition:opacity .25s,transform .35s cubic-bezier(.2,.8,.2,1);box-shadow:0 10px 35px #0004,0 0 25px #49d59713}.toast.show{animation:toastPop .38s cubic-bezier(.2,.9,.3,1) both}
+@keyframes ambientDriftA{0%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(18vw,12vh,0) scale(1.18)}100%{transform:translate3d(8vw,42vh,0) scale(.92)}}@keyframes ambientDriftB{0%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(-20vw,-15vh,0) scale(.9)}100%{transform:translate3d(-4vw,22vh,0) scale(1.16)}}@keyframes pageReveal{from{opacity:0}to{opacity:1}}@keyframes fadeSlide{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}@keyframes cardRise{from{opacity:0;transform:translateY(20px) scale(.99)}to{opacity:1;transform:translateY(0) scale(1)}}@keyframes mediaEnter{from{opacity:0;transform:translateY(12px) scale(.975)}to{opacity:1;transform:translateY(0) scale(1)}}@keyframes mediaExit{to{opacity:0;transform:translateY(8px) scale(.94);filter:blur(2px)}}@keyframes emptyPop{from{opacity:0;transform:scale(.97)}to{opacity:1;transform:scale(1)}}@keyframes logoFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}@keyframes badgeGlow{0%,100%{box-shadow:0 0 0 #49d59700}50%{box-shadow:0 0 20px #49d59712}}@keyframes iconBreathe{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}@keyframes dropShimmer{0%,70%,100%{transform:translateX(-75%) rotate(8deg)}88%{transform:translateX(75%) rotate(8deg)}}@keyframes countBump{50%{transform:scale(1.1);color:var(--green)}}@keyframes toastPop{from{opacity:0;transform:translate(-50%,16px) scale(.96)}to{opacity:1;transform:translate(-50%,0) scale(1)}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+
+/* Light theme polish: soft sage canvas, white surfaces, pastel ambient motion */
+body{background:radial-gradient(ellipse at 8% 0%,#d8f1df 0,transparent 38%),radial-gradient(ellipse at 100% 30%,#efe3f7 0,transparent 36%),var(--bg);color:var(--text)}
+body::before{background:radial-gradient(circle,#9ce2b5 0%,#9ce2b500 70%);opacity:.42}
+body::after{background:radial-gradient(circle,#d7b8ee 0%,#d7b8ee00 70%);opacity:.38}
+.nav{border-bottom-color:#20372a12}
+.card{background:linear-gradient(145deg,#ffffffed,#f7fbf7ed);border-color:#d6e5d9;box-shadow:0 20px 60px #496e5512}
+.card:hover{border-color:#21865a55;box-shadow:0 24px 70px #496e551a,0 0 28px #21865a0a}
+.drop{border-color:#a9cbb4;background:#e9f6ec}
+.drop:hover,.drop.over{border-color:var(--green);background:#dff2e4}
+.drop::after{background:linear-gradient(110deg,transparent 40%,#ffffff20 49%,#ffffff65 51%,transparent 60%)}
+.btn{background:#f1f7f2;color:var(--text);border-color:#d6e5d9}
+.btn:hover{border-color:#21865a88;box-shadow:0 7px 18px #496e5518}
+.primary{background:linear-gradient(110deg,#55c88b,#c4e987);color:#183b28;border:0}
+.search{background:#ffffff;color:var(--text);border-color:#d6e5d9}
+.search:focus{box-shadow:0 0 0 4px #21865a13;background:#f8fcf8}
+.media{background:#ffffff;border-color:#d6e5d9;box-shadow:0 6px 20px #496e5508}
+.media:hover{border-color:#21865a88;box-shadow:0 15px 30px #496e551a}
+.preview{background:linear-gradient(145deg,#e1f1e5,#eee8f6)}
+.type{background:#ffffffdf;color:#20372a;border-color:#20372a20}
+.count{border-color:#d6e5d9;background:#ffffffa8}
+.empty{border-color:#cbded0;background:#ffffff75}
+.privacy{border-top-color:#d6e5d9}
+.toast{background:#ffffff;color:#20372a;border:1px solid #d6e5d9;box-shadow:0 10px 35px #496e5518,0 0 25px #21865a0b}
+.logo{color:#153d29}
+.badge{background:#e3f5e8;color:#21865a;border-color:#b9e1c5}
+.number{background:#e4f5e8;border-color:#b9e1c5;color:#21865a}
+@media(prefers-reduced-motion:reduce){body::before,body::after{animation:none!important}}
+
+
+/* Motion Plus: extra ambient particles, tactile controls, reveal effects and polished states */
+html{scroll-behavior:smooth}
+body{background-size:140% 140%;animation:canvasBreath 24s ease-in-out infinite alternate}
+body::before{animation:ambientDriftA 20s ease-in-out infinite alternate,orbPulse 9s ease-in-out infinite}
+body::after{animation:ambientDriftB 24s ease-in-out infinite alternate,orbPulse 11s 1s ease-in-out infinite}
+.nav{animation:navDrop .7s cubic-bezier(.16,1,.3,1) both}
+.brand{transition:transform .3s}.brand:hover{transform:translateX(3px)}
+.badge{animation:badgeGlow 3.5s ease-in-out infinite, badgeFloat 5s ease-in-out infinite;transition:transform .25s}
+.badge:hover{transform:translateY(-2px) scale(1.025)}
+.hero h1 span{background-size:220% 100%;animation:gradientFlow 7s ease-in-out infinite alternate}
+.hero p{animation:fadeSlide .75s .3s both}
+.card{transform-origin:50% 10%;will-change:transform}
+.card.reveal-ready{opacity:0;transform:translateY(22px)}
+.card.reveal-ready.revealed{opacity:1;transform:translateY(0);transition:opacity .7s ease,transform .8s cubic-bezier(.16,1,.3,1)}
+.card:hover h2{transition:color .25s;color:var(--green)}
+.step{padding:3px 4px;border-radius:10px;transition:transform .28s,background .28s}
+.step:hover{background:#21865a08}
+.number{box-shadow:0 0 0 0 #21865a00}.step:hover .number{box-shadow:0 0 0 5px #21865a0b}
+.drop{transform:translateZ(0)}.drop:focus-within{outline:3px solid #21865a30;outline-offset:3px}
+.drop.drag-pulse{animation:dropPulse .65s ease-in-out infinite alternate}
+.upload-icon{position:relative}.upload-icon::after{content:"";position:absolute;inset:-5px;border:1px solid #21865a40;border-radius:18px;animation:ringPulse 2.4s ease-out infinite}
+.btn{transform:translateZ(0)}.btn:focus-visible{outline:3px solid #21865a45;outline-offset:3px}
+.btn.ripple{overflow:hidden}.ripple-dot{position:absolute;z-index:3;pointer-events:none;border-radius:50%;background:#ffffff90;transform:scale(0);animation:rippleWave .55s ease-out forwards}
+.primary{background-size:180% 180%;animation:primarySheen 8s ease infinite}
+#clearBtn:hover{background:#fff0f0;color:#a94343;border-color:#e7b9b9}
+#downloadAll:hover{background:#e6f7eb}
+.search{transition:box-shadow .3s,border-color .3s,transform .25s}.search:focus{transform:translateY(-1px)}
+.toolbar{animation:fadeSlide .6s .2s both}
+.media{transform-origin:50% 70%;backface-visibility:hidden}
+.media::before{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;border-radius:inherit;background:linear-gradient(130deg,#ffffff00 30%,#ffffff55 48%,#ffffff00 62%);transform:translateX(-140%);transition:transform .75s ease}
+.media:hover::before{transform:translateX(140%)}
+.media:hover .type{animation:tagBounce .4s ease}
+.preview{transition:background .3s}.media:hover .preview{background:#e0f4e5}
+.preview video:focus-visible,.preview img:focus-visible{outline:3px solid #21865a;outline-offset:-3px}
+.media-actions .btn:first-child{transform-origin:center}.media-actions .btn:first-child:hover{animation:saveNudge .45s ease}
+.media-actions .btn:last-child:hover{animation:removeWiggle .3s ease}
+.media.removing,.media.clearing{transform-origin:center}
+.empty .big{filter:drop-shadow(0 5px 8px #21865a16)}
+.count{transition:background .25s,border-color .25s,transform .25s}.count.bump{background:#e4f7e9;border-color:#b9e1c5}
+.toast{backdrop-filter:blur(12px)}
+.toast.show{animation:toastSpring .42s cubic-bezier(.18,.89,.32,1.28) both}
+.foot{transition:color .3s;animation:fadeSlide .8s .4s both}.foot:hover{color:var(--green)}
+.motion-spark{position:fixed;z-index:20;pointer-events:none;width:7px;height:7px;border-radius:50%;background:#7acb9a;box-shadow:0 0 14px #7acb9a;animation:sparkFade .7s ease-out forwards}
+@keyframes canvasBreath{0%{background-position:0% 0%}100%{background-position:100% 80%}}
+@keyframes navDrop{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes gradientFlow{from{background-position:0% 50%}to{background-position:100% 50%}}
+@keyframes orbPulse{0%,100%{filter:blur(65px);opacity:.28}50%{filter:blur(82px);opacity:.45}}
+@keyframes badgeFloat{0%,100%{translate:0 0}50%{translate:0 -2px}}
+@keyframes dropPulse{from{box-shadow:0 0 0 0 #21865a0b}to{box-shadow:0 0 0 7px #21865a15}}
+@keyframes ringPulse{0%{transform:scale(.92);opacity:.65}100%{transform:scale(1.35);opacity:0}}
+@keyframes rippleWave{to{transform:scale(1);opacity:0}}
+@keyframes primarySheen{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+@keyframes tagBounce{0%,100%{transform:translateY(0)}45%{transform:translateY(-3px)}}
+@keyframes saveNudge{0%,100%{translate:0 0}40%{translate:0 -2px}70%{translate:0 1px}}
+@keyframes removeWiggle{0%,100%{rotate:0deg}30%{rotate:-5deg}70%{rotate:5deg}}
+@keyframes toastSpring{from{opacity:0;transform:translate(-50%,18px) scale(.9)}to{opacity:1;transform:translate(-50%,0) scale(1)}}
+@keyframes sparkFade{to{opacity:0;transform:translate(var(--sx,8px),var(--sy,-18px)) scale(.1)}}
+@media(max-width:800px){body{background-size:100% 100%}.card:hover{transform:none}.motion-spark{display:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}body,body::before,body::after,.badge,.hero h1 span,.primary{animation:none!important}.card.reveal-ready{opacity:1;transform:none}.motion-spark{display:none}}
+
+
+/* MOTION ULTRA — layered, performance-conscious micro-interactions */
+:root{--motion-ease:cubic-bezier(.2,.8,.2,1);--motion-spring:cubic-bezier(.18,1.25,.35,1)}
+html{scroll-behavior:smooth}
+body{
+  background-color:#f6faf6;
+  background-image:
+    radial-gradient(ellipse at 8% 4%, rgba(115,190,145,.19) 0%, transparent 34%),
+    radial-gradient(ellipse at 94% 16%, rgba(170,157,220,.15) 0%, transparent 32%),
+    radial-gradient(ellipse at 50% 100%, rgba(126,185,157,.13) 0%, transparent 42%),
+    linear-gradient(145deg,#fbfdfb 0%,#f2f8f3 48%,#f8f7fc 100%);
+  background-attachment:scroll;
+}
+body::before{
+  filter:blur(72px);opacity:.20;animation:none!important;
+  background:radial-gradient(ellipse at center,rgba(123,190,148,.22),transparent 68%);
+}
+body::after{
+  filter:blur(82px);opacity:.18;animation:none!important;
+  background:radial-gradient(ellipse at center,rgba(163,151,217,.19),transparent 70%);
+}
+.motion-noise{display:none!important}
+.motion-orbit{display:none!important}
+.motion-orbit::before,.motion-orbit::after{display:none!important}
+.motion-orbit::after{display:none!important}
+.motion-orbit.orbit-a{left:-13vw;top:42vh}
+.motion-orbit.orbit-b{right:-13vw;top:7vh;animation-duration:44s}
+.wrap{position:relative;z-index:1}
+header,.hero,.layout,.footer,.steps,.stats,.toolbar,.gallery-header{animation:ultraRise .9s var(--motion-spring) both}
+header{animation-delay:.02s}.hero{animation-delay:.1s}.steps{animation-delay:.16s}.layout{animation-delay:.22s}
+.hero h1{background-size:200% auto;animation:ultraTitle 8s ease-in-out infinite,ultraRise .8s var(--motion-spring) both}
+h1,h2,h3,.section-title{transition:letter-spacing .4s var(--motion-ease),transform .4s var(--motion-ease)}
+h2:hover,h3:hover{letter-spacing:.015em;transform:translateX(2px)}
+.card,.panel,.stat,.step,.drop,.media,.toolbar,.gallery-header{transform-origin:center;will-change:transform}
+.card,.panel{position:relative;overflow:hidden}
+.card::before,.panel::before{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;padding:1px;background:linear-gradient(120deg,#62b98b00,#62b98b4d,#a48bd94d,#62b98b00);background-size:240% 240%;opacity:0;transition:opacity .4s;mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask-composite:exclude}
+.card:hover::before,.panel:hover::before{opacity:1;animation:borderFlow 5s linear infinite}
+.card:hover,.panel:hover{transform:translateY(-3px);box-shadow:0 24px 65px #507b5b16,0 4px 20px #9d8ed011}
+button,.btn,a,.iconbtn,input[type=file]::file-selector-button{transition:transform .22s var(--motion-spring),box-shadow .28s,filter .25s,background .28s,border-color .28s,color .25s}
+button:focus-visible,.btn:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #68bd91a8;outline-offset:3px}
+button:hover,.btn:hover{filter:saturate(1.12);box-shadow:0 8px 22px #54896520}
+button:active,.btn:active{transform:scale(.955)}
+.btn.primary,.primary{position:relative;isolation:isolate;overflow:hidden}
+.btn.primary::before,.primary::before{content:"";position:absolute;inset:-60%;z-index:-1;background:linear-gradient(110deg,transparent 38%,#ffffff7a 50%,transparent 62%);transform:translateX(-65%) rotate(8deg);transition:transform .7s var(--motion-ease)}
+.btn.primary:hover::before,.primary:hover::before{transform:translateX(65%) rotate(8deg)}
+.btn.primary::after,.primary::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:0 0 0 0 #61b98b66;animation:buttonHalo 3.2s ease-out infinite;pointer-events:none}
+.drop{background-image:linear-gradient(135deg,#ffffff40,transparent 45%,#8fca9a0b);background-size:200% 200%;animation:dropTint 10s ease infinite}
+.drop:hover,.drop.over{transform:scale(1.008);border-color:#56ac7a;box-shadow:0 0 0 5px #5dbb8918,0 20px 44px #5b9e7417}
+.drop::after{animation:dropShimmer 4.8s ease-in-out infinite}
+.upload-icon{filter:drop-shadow(0 5px 9px #5fae7d26);animation:iconFloat 3.6s ease-in-out infinite}
+.step{transition:transform .35s var(--motion-spring),background .3s,box-shadow .3s}
+.step:hover{transform:translateY(-4px) scale(1.012);box-shadow:0 12px 28px #5b9e7414}
+.number{animation:numberBreath 4s ease-in-out infinite}
+.step:nth-child(2) .number{animation-delay:.7s}.step:nth-child(3) .number{animation-delay:1.4s}
+.search{transition:transform .3s var(--motion-ease),box-shadow .3s,background .3s}
+.search:focus{transform:translateY(-1px) scale(1.005);box-shadow:0 0 0 4px #63b98720,0 9px 24px #5b9e7410}
+.media{position:relative;isolation:isolate;transition:transform .4s var(--motion-spring),box-shadow .35s,border-color .3s;overflow:hidden}
+.media::before{content:"";position:absolute;inset:0;z-index:3;pointer-events:none;background:linear-gradient(115deg,transparent 20%,#ffffff55 48%,transparent 72%);transform:translateX(-130%);transition:transform .8s var(--motion-ease)}
+.media:hover::before{transform:translateX(130%)}
+.media:hover{transform:translateY(-7px) scale(1.018) rotateX(1deg);box-shadow:0 22px 42px #416c4c22,0 0 0 1px #66b88b2c}
+.media .preview{overflow:hidden}
+.media .preview img,.media .preview video{transition:transform .8s var(--motion-ease),filter .5s}
+.media:hover .preview img{transform:scale(1.075);filter:saturate(1.07)}
+.media .type{transition:transform .35s var(--motion-spring),background .3s}
+.media:hover .type{transform:translateY(-2px);background:#dff7e9f2}
+.media-actions{transition:transform .3s var(--motion-ease),opacity .3s}
+.media:hover .media-actions{transform:translateY(-2px)}
+.media.removing,.media.clearing{animation:ultraExit .38s var(--motion-ease) forwards}
+.empty{animation:emptyFloat 5s ease-in-out infinite}
+.empty .big{animation:emptyIcon 4s ease-in-out infinite;filter:drop-shadow(0 8px 12px #60aa7b22)}
+.count.bump{animation:countSpring .5s var(--motion-spring)}
+.toast.show{animation:toastSpring .48s var(--motion-spring) both}
+.toast::before{content:"";position:absolute;left:0;bottom:0;height:3px;width:100%;transform-origin:left;background:linear-gradient(90deg,#56b57e,#a68bd7);animation:toastProgress 2.5s linear both}
+body::selection{background:#a3dfba88}
+.scroll-progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:9999;background:linear-gradient(90deg,#58b981,#9b82d6,#58b981);background-size:200% 100%;box-shadow:0 0 12px #68bd9180;transition:width .12s linear;animation:progressHue 4s linear infinite}
+.cursor-aura{display:none!important}
+body.cursor-motion .cursor-aura{display:none!important}
+.ripple-wave{position:absolute;border-radius:50%;pointer-events:none;z-index:10;background:#fff8;transform:scale(0);animation:rippleOut .62s ease-out forwards}
+.motion-pop{animation:popIn .42s var(--motion-spring) both}
+@keyframes ultraOrbOne{0%{transform:translate3d(0,0,0) scale(.92)}40%{transform:translate3d(17vw,-8vh,0) scale(1.16)}75%{transform:translate3d(8vw,25vh,0) scale(1.02)}100%{transform:translate3d(-3vw,42vh,0) scale(1.13)}}
+@keyframes ultraOrbTwo{0%{transform:translate3d(0,0,0) scale(1)}35%{transform:translate3d(-12vw,18vh,0) scale(1.13)}70%{transform:translate3d(-24vw,-6vh,0) scale(.94)}100%{transform:translate3d(-5vw,30vh,0) scale(1.1)}}
+@keyframes orbitSpin{to{transform:rotate(360deg)}}
+@keyframes grainDrift{0%{background-position:0 0}100%{background-position:95px 120px}}
+@keyframes ultraRise{from{opacity:0;transform:translateY(24px) scale(.985);filter:blur(3px)}to{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}}
+@keyframes ultraTitle{0%,100%{background-position:0% 50%;filter:drop-shadow(0 0 0 #8bc9a300)}50%{background-position:100% 50%;filter:drop-shadow(0 4px 14px #8bc9a333)}}
+@keyframes borderFlow{0%{background-position:0% 50%}100%{background-position:240% 50%}}
+@keyframes buttonHalo{0%{box-shadow:0 0 0 0 #61b98b00}35%{box-shadow:0 0 0 5px #61b98b18}100%{box-shadow:0 0 0 10px #61b98b00}}
+@keyframes dropTint{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+@keyframes iconFloat{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-6px) rotate(-3deg)}}
+@keyframes numberBreath{0%,100%{box-shadow:0 0 0 0 #6fbd8b00}50%{box-shadow:0 0 0 5px #6fbd8b12}}
+@keyframes ultraExit{to{opacity:0;transform:translateY(14px) scale(.9) rotate(-1deg);filter:blur(4px)}}
+@keyframes emptyFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes emptyIcon{0%,100%{transform:rotate(0) scale(1)}50%{transform:rotate(-5deg) scale(1.06)}}
+@keyframes countSpring{0%{transform:scale(1)}45%{transform:scale(1.18) rotate(-3deg)}75%{transform:scale(.96) rotate(1deg)}100%{transform:scale(1)}}
+@keyframes toastSpring{0%{opacity:0;transform:translate(-50%,18px) scale(.9)}65%{opacity:1;transform:translate(-50%,-3px) scale(1.025)}100%{opacity:1;transform:translate(-50%,0) scale(1)}}
+@keyframes toastProgress{from{transform:scaleX(1)}to{transform:scaleX(0)}}
+@keyframes progressHue{to{background-position:200% 0}}
+@keyframes rippleOut{to{transform:scale(1);opacity:0}}
+@keyframes popIn{from{opacity:0;transform:scale(.92) translateY(8px)}to{opacity:1;transform:scale(1) translateY(0)}}
+@media(hover:none){.cursor-aura{display:none}.media:hover{transform:none}.media:hover .preview img{transform:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}body::before,body::after,.motion-noise,.motion-orbit,.cursor-aura,.number,.empty,.empty .big,.upload-icon{animation:none!important}.media:hover,.card:hover,.panel:hover,.step:hover{transform:none!important}*,*::before,*::after{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}}
+
+
+/* Static texture and soft ambient color; intentionally no background animation */
+body{position:relative}
+body .app, body .container, body main, body .page{
+  position:relative;
+}
+
+
+/* Photo / Video library tabs */
+.media-tabs{display:flex;gap:10px;padding:6px;margin:18px 0 16px;background:rgba(232,242,234,.82);border:1px solid rgba(105,151,119,.18);border-radius:16px}
+.media-tab{appearance:none;border:0;flex:1;display:flex;align-items:center;justify-content:center;gap:9px;padding:12px 14px;border-radius:11px;background:transparent;color:#597363;font:600 14px/1.2 inherit;cursor:pointer;transition:background .22s ease,color .22s ease,box-shadow .22s ease,transform .22s ease}
+.media-tab:hover{transform:translateY(-1px);background:rgba(255,255,255,.65)}
+.media-tab.active{background:#fff;color:#237449;box-shadow:0 5px 18px rgba(48,91,61,.10),inset 0 0 0 1px rgba(70,139,91,.12)}
+.media-tab .tab-count{display:inline-flex;align-items:center;justify-content:center;min-width:23px;height:22px;padding:0 6px;border-radius:7px;background:#edf5ef;color:#4f795d;font-size:11px;font-weight:750}
+.media-tab.active .tab-count{background:#e1f3e6;color:#217447}
+.media-tab svg{width:17px;height:17px;flex:none}
+.media-empty{grid-column:1/-1;padding:34px 18px;text-align:center;border:1px dashed rgba(91,143,105,.28);border-radius:18px;background:rgba(255,255,255,.55);color:#66806d}
+.media-empty strong{display:block;color:#365d43;font-size:15px;margin-bottom:6px}
+.media-empty span{font-size:13px}
+@media(max-width:480px){.media-tabs{gap:6px}.media-tab{padding:11px 8px;font-size:13px;gap:6px}}
+
+
+/* Tab-switch stability fix: hidden media cards must never participate in layout or animation */
+[hidden]{display:none!important;visibility:hidden!important;animation:none!important;transition:none!important}
+.media-tab{will-change:auto}
+.media-tab.active{transform:none}
+
+.media-tab,.media-tab.active{animation:none!important}
+
+</style></head>
+<body>
+
+
+<div class="scroll-progress" aria-hidden="true"></div>
+<div class="wrap">
+<header class="nav"><div class="brand"><span class="logo">↧</span><span>StatusPocket<span style="color:var(--green)">.</span><div class="tiny" style="font-weight:500;letter-spacing:0">Your private status saver</div></span></div><span class="badge">● Runs on your device</span></header>
+<section class="hero"><div class="eyebrow">A simple status media toolkit</div><h1>Keep the moments.<br><span>Skip the hassle.</span></h1><p>Preview and save WhatsApp Status photos and videos you already have access to. Add the files here, then download the ones you want to keep.</p></section>
+<main class="layout"><section class="card"><h2>Import status media</h2><p class="sub">Start with files saved on your phone or computer.</p>
+<label class="drop" id="drop" for="fileInput"><span class="upload-icon">↑</span><strong>Choose photos or videos</strong><span>or drag and drop files here</span><span>JPG · PNG · WEBP · MP4 · MOV · WEBM</span></label><input id="fileInput" type="file" accept="image/*,video/*" multiple hidden>
+<div class="actions"><button class="btn primary" id="chooseBtn">＋ Select files</button><button class="btn" id="clearBtn">Clear gallery</button></div>
+<div class="steps"><div class="step"><span class="number">1</span><div><strong>Open WhatsApp</strong><p>View a status you’re allowed to save.</p></div></div><div class="step"><span class="number">2</span><div><strong>Locate the media file</strong><p>On Android, check WhatsApp’s Status media folder if your file manager shows it. Some folders are restricted.</p></div></div><div class="step"><span class="number">3</span><div><strong>Select, preview and save</strong><p>Import the file above, then tap Download on its card.</p></div></div></div>
+<div class="privacy">🔒 <b>Private by design.</b> Files are previewed locally in this browser. This page does not connect to WhatsApp, access your account, or upload your selected media to a server. Respect other people’s privacy and get permission before sharing their status.</div>
+</section><section class="card">
+<div class="media-tabs" role="tablist" aria-label="Choose media type">
+  <button class="media-tab active" type="button" role="tab" aria-selected="true" data-media-tab="photo">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="3"/><circle cx="8.5" cy="9" r="1.5"/><path d="m21 15-5-5L5 20"/></svg>
+    Photos <span class="tab-count" data-photo-count>0</span>
+  </button>
+  <button class="media-tab" type="button" role="tab" aria-selected="false" data-media-tab="video">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="13" height="14" rx="2.5"/><path d="m16 10 5-3v10l-5-3z"/></svg>
+    Videos <span class="tab-count" data-video-count>0</span>
+  </button>
+</div>
+<div class="gallery-head"><div><h2>Your gallery</h2><p class="sub" style="margin:4px 0 0">Selected status media</p></div><span class="count" id="count">0 files</span></div><div class="toolbar"><input class="search" id="search" type="search" placeholder="Filter by filename…" aria-label="Filter files by filename"><button class="btn" id="downloadAll">Download all</button></div><div class="grid" id="grid"><div class="empty"><div class="big">▧</div><strong>Your gallery is ready</strong><p>Select status photos or videos to preview them here.</p></div></div></section></main>
+<footer class="foot">StatusPocket is an independent helper and is not affiliated with WhatsApp or Meta.</footer></div><div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+(()=>{'use strict';const $=id=>document.getElementById(id);let items=[],toastTimer;function toast(msg){const t=$('toast');t.textContent=msg;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),2400)}function size(n){if(n<1024)return n+' B';if(n<1048576)return (n/1024).toFixed(0)+' KB';return (n/1048576).toFixed(1)+' MB'}function safe(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}function addFiles(list){let added=0;for(const f of list){if(!f.type.startsWith('image/')&&!f.type.startsWith('video/'))continue;if(items.some(x=>x.file.name===f.name&&x.file.size===f.size&&x.file.lastModified===f.lastModified))continue;items.push({id:crypto.randomUUID?crypto.randomUUID():String(Date.now())+Math.random(),file:f,url:URL.createObjectURL(f)});added++}render();if(added)toast(added+' file'+(added===1?'':'s')+' added');else if(list.length)toast('No new supported media files found')}function render(){const q=$('search').value.trim().toLowerCase(),shown=items.filter(x=>x.file.name.toLowerCase().includes(q));const count=$('count');count.textContent=items.length+' file'+(items.length===1?'':'s');count.classList.remove('bump');void count.offsetWidth;count.classList.add('bump');if(!shown.length){$('grid').innerHTML='<div class="empty"><div class="big">▧</div><strong>'+(items.length?'No matching files':'Your gallery is ready')+'</strong><p>'+(items.length?'Try another filename.':'Select status photos or videos to preview them here.')+'</p></div>';return}$('grid').innerHTML=shown.map(x=>{const video=x.file.type.startsWith('video/');return '<article class="media" data-id="'+safe(x.id)+'"><div class="preview">'+(video?'<video src="'+x.url+'" controls preload="metadata" aria-label="Preview '+safe(x.file.name)+'"></video>':'<img src="'+x.url+'" alt="Preview '+safe(x.file.name)+'" loading="lazy">')+'<span class="type">'+(video?'VIDEO':'PHOTO')+'</span></div><div class="media-info"><div class="filename" title="'+safe(x.file.name)+'">'+safe(x.file.name)+'</div><div class="filesize">'+size(x.file.size)+'</div><div class="media-actions"><button class="btn primary" data-download="'+safe(x.id)+'">↓ Save</button><button class="btn" data-remove="'+safe(x.id)+'" aria-label="Remove '+safe(x.file.name)+'">×</button></div></div></article>'}).join('')}
+function download(x){const a=document.createElement('a');a.href=x.url;a.download=x.file.name;a.rel='noopener';document.body.appendChild(a);a.click();a.remove()}$('fileInput').addEventListener('change',e=>{addFiles(Array.from(e.target.files||[]));e.target.value=''});$('chooseBtn').addEventListener('click',()=>$('fileInput').click());$('clearBtn').addEventListener('click',()=>{if(!items.length){toast('Gallery is already empty');return}const cards=Array.from($('grid').querySelectorAll('.media'));cards.forEach((card,i)=>{card.style.setProperty('--exit-delay',(i*35)+'ms');card.classList.add('clearing')});setTimeout(()=>{items.forEach(x=>URL.revokeObjectURL(x.url));items=[];render();toast('Gallery cleared')},Math.min(420,260+cards.length*15))});$('search').addEventListener('input',render);$('grid').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const id=b.dataset.download||b.dataset.remove,x=items.find(v=>v.id===id);if(!x)return;if(b.dataset.download){download(x);toast('Download started')}else{const card=b.closest('.media');if(card){card.classList.add('removing');setTimeout(()=>{URL.revokeObjectURL(x.url);items=items.filter(v=>v.id!==id);render();toast('File removed')},220)}else{URL.revokeObjectURL(x.url);items=items.filter(v=>v.id!==id);render();toast('File removed')}}});$('downloadAll').addEventListener('click',()=>{const q=$('search').value.trim().toLowerCase(),list=items.filter(x=>x.file.name.toLowerCase().includes(q));if(!list.length){toast('No files to download');return}list.forEach((x,i)=>setTimeout(()=>download(x),i*350));toast('Starting '+list.length+' download'+(list.length===1?'':'s'))});const drop=$('drop');['dragenter','dragover'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.add('over')}));['dragleave','drop'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.remove('over')}));drop.addEventListener('drop',e=>addFiles(Array.from(e.dataTransfer.files||[])));document.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;b.classList.remove('is-animating');void b.offsetWidth;b.classList.add('is-animating');setTimeout(()=>b.classList.remove('is-animating'),220)});window.addEventListener('beforeunload',()=>items.forEach(x=>URL.revokeObjectURL(x.url)));})();
+</script>
+<script>
+(()=>{'use strict';
+ const reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ const drop=document.getElementById('drop');
+ if(drop){drop.addEventListener('dragenter',()=>drop.classList.add('drag-pulse'));['dragleave','drop'].forEach(ev=>drop.addEventListener(ev,()=>drop.classList.remove('drag-pulse')))}
+ // Soft ripple feedback for pointer actions, respecting reduced-motion settings.
+ if(!reduced) document.addEventListener('pointerdown',e=>{
+   const b=e.target.closest('button,.drop'); if(!b||e.pointerType==='touch'&&b.classList.contains('drop'))return;
+   const r=b.getBoundingClientRect(),d=Math.max(24,Math.min(100,Math.max(r.width,r.height)*.7));
+   const dot=document.createElement('span');dot.className='ripple-dot';dot.style.width=d+'px';dot.style.height=d+'px';
+   dot.style.left=(e.clientX-r.left-d/2)+'px';dot.style.top=(e.clientY-r.top-d/2)+'px';b.appendChild(dot);setTimeout(()=>dot.remove(),650);
+ },{passive:true});
+ // Reveal panels as they enter view; visible immediately if observer is unavailable.
+ const cards=[...document.querySelectorAll('.layout>.card')];
+ if(!reduced&&'IntersectionObserver'in window){cards.forEach(c=>c.classList.add('reveal-ready'));const io=new IntersectionObserver(entries=>entries.forEach(en=>{if(en.isIntersecting){en.target.classList.add('revealed');io.unobserve(en.target)}}),{threshold:.12});cards.forEach(c=>io.observe(c))}
+ // Tiny ambient sparkles on mouse movement only, capped to avoid distracting or slowing the page.
+ if(!reduced&&matchMedia('(hover:hover) and (pointer:fine)').matches){let last=0;document.addEventListener('pointermove',e=>{const now=performance.now();if(now-last<115)return;last=now;const p=document.createElement('i');p.className='motion-spark';p.style.left=e.clientX+'px';p.style.top=e.clientY+'px';p.style.setProperty('--sx',(Math.random()*24-12)+'px');p.style.setProperty('--sy',(-10-Math.random()*20)+'px');document.body.appendChild(p);setTimeout(()=>p.remove(),720)},{passive:true})}
+ // Animate filename filtering and focus transitions without blocking typing.
+ const search=document.getElementById('search');if(search){search.addEventListener('input',()=>{search.classList.remove('search-pulse');void search.offsetWidth;search.classList.add('search-pulse')});search.addEventListener('animationend',()=>search.classList.remove('search-pulse'))}
+})();
+</script>
+
+<script>
+/* Motion Ultra interaction layer: decorative only, never changes gallery logic. */
+(()=> {
+ const reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ const progress=document.querySelector('.scroll-progress');
+ const updateProgress=()=>{if(!progress)return;const max=document.documentElement.scrollHeight-innerHeight;progress.style.width=(max>0?Math.min(100,scrollY/max*100):0)+'%'};
+ addEventListener('scroll',updateProgress,{passive:true});addEventListener('resize',updateProgress,{passive:true});updateProgress();
+ const aura=document.querySelector('.cursor-aura');let raf=0,px=-400,py=-400;
+ if(aura&&!reduce&&matchMedia('(hover:hover)').matches){
+   addEventListener('pointermove',e=>{if(e.pointerType==='touch')return;px=e.clientX;py=e.clientY;document.body.classList.add('cursor-motion');if(!raf)raf=requestAnimationFrame(()=>{aura.style.left=px+'px';aura.style.top=py+'px';raf=0})},{passive:true});
+   addEventListener('pointerleave',()=>document.body.classList.remove('cursor-motion'),{passive:true});
+ }
+ if(!reduce){
+   document.addEventListener('click',e=>{
+     const target=e.target.closest('button,.btn,a,.drop');
+     if(!target||target.closest('video')||target.matches('input[type=file]'))return;
+     const rect=target.getBoundingClientRect();
+     if(rect.width<1||rect.height<1)return;
+     const wave=document.createElement('span');wave.className='ripple-wave';
+     const size=Math.max(rect.width,rect.height)*1.4;
+     const x=(e.clientX||rect.left+rect.width/2)-rect.left-size/2;
+     const y=(e.clientY||rect.top+rect.height/2)-rect.top-size/2;
+     Object.assign(wave.style,{width:size+'px',height:size+'px',left:x+'px',top:y+'px'});
+     if(getComputedStyle(target).position==='static')target.style.position='relative';
+     target.style.overflow='hidden';target.appendChild(wave);setTimeout(()=>wave.remove(),700);
+   },{passive:true});
+   const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{
+     if(entry.isIntersecting){entry.target.classList.add('motion-pop');observer.unobserve(entry.target)}
+   }),{threshold:.12});
+   document.querySelectorAll('.card,.panel,.step,.stats,.toolbar,.gallery-header').forEach(el=>observer.observe(el));
+ }
+ // Gentle tilt is only applied to non-interactive cards on mouse/trackpad.
+ if(!reduce&&matchMedia('(hover:hover)').matches){
+   document.querySelectorAll('.card,.panel').forEach(card=>{
+     card.addEventListener('pointermove',e=>{
+       if(e.pointerType==='touch')return;
+       const r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+       card.style.transform=`perspective(900px) rotateX(${-y*1.7}deg) rotateY(${x*1.7}deg) translateY(-2px)`;
+     });
+     card.addEventListener('pointerleave',()=>{card.style.transform=''});
+   });
+ }
+})();
+</script>
+
+
+<script>
+(function(){
+  const tabs=[...document.querySelectorAll('[data-media-tab]')];
+  if(!tabs.length) return;
+  let activeType='photo';
+  const gallery=document.querySelector('.gallery-grid,.gallery,.status-grid,.media-grid,.items-grid');
+  if(!gallery) return;
+
+  function cards(){
+    return [...gallery.children].filter(el=>!el.matches('.media-empty'));
+  }
+  function isVideo(card){
+    return !!card.querySelector('video, [data-type="video"], .video-badge, .video-indicator') ||
+      /\.(mp4|webm|mov|m4v|3gp)(?:[?#].*)?$/i.test(
+        (card.querySelector('video source, video, a[download],a[href]')||{}).src ||
+        (card.querySelector('video source, video, a[download],a[href]')||{}).href || ''
+      );
+  }
+  function updateCounts(){
+    const all=cards();
+    const photos=all.filter(c=>!isVideo(c)).length;
+    const videos=all.filter(isVideo).length;
+    const p=document.querySelector('[data-photo-count]');
+    const v=document.querySelector('[data-video-count]');
+    if(p)p.textContent=photos;
+    if(v)v.textContent=videos;
+  }
+  function showEmpty(type){
+    let empty=gallery.querySelector('.media-empty');
+    if(!empty){empty=document.createElement('div');empty.className='media-empty';gallery.appendChild(empty);}
+    const message=type==='video'
+      ? '<strong>No videos yet</strong><span>Import a video to see it here.</span>'
+      : '<strong>No photos yet</strong><span>Import a photo to see it here.</span>';
+    if(empty.innerHTML!==message) empty.innerHTML=message;
+    empty.hidden=false;
+  }
+  function render(){
+    const all=cards().filter(c=>!c.classList.contains('media-empty'));
+    let visible=0;
+    all.forEach(card=>{
+      const matches=(activeType==='video')===isVideo(card);
+      card.hidden=!matches;
+      if(matches)visible++;
+    });
+    const existing=gallery.querySelector('.media-empty');
+    if(visible){if(existing)existing.remove();}
+    else showEmpty(activeType);
+    tabs.forEach(tab=>{
+      const active=tab.dataset.mediaTab===activeType;
+      tab.classList.toggle('active',active);
+      tab.setAttribute('aria-selected',String(active));
+    });
+    updateCounts();
+  }
+  tabs.forEach(tab=>tab.addEventListener('click',()=>{activeType=tab.dataset.mediaTab;render()}));
+  // Watch only direct gallery children. Subtree observation reacts to our own
+  // empty-state markup and can cause repeated renders / tab animation flicker.
+  let refreshQueued=false;
+  const observer=new MutationObserver(()=>{
+    if(refreshQueued)return;
+    refreshQueued=true;
+    requestAnimationFrame(()=>{
+      refreshQueued=false;
+      render();
+    });
+  });
+  observer.observe(gallery,{childList:true,subtree:false});
+  render();
+})();
+</script>
+
+</body></html>
